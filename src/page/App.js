@@ -1,48 +1,31 @@
 import React, {Component} from 'react';
 // 引入React-Router模块
-import {BrowserRouter as Router, IndexLink, IndexRoute, Link} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom'
 import {Button, Icon, NavBar, TabBar} from 'antd-mobile';
-import './App.css';
+import './css/App.css';
 import MainPage from './MainPage'
 import 'antd-mobile/dist/antd-mobile.css';
 
 
 const Home = () => (
     <div style={{ backgroundColor: 'white',width:'100%',height:'100%',marginTop:45}}>
-        {/*<NavBar*/}
-            {/*mode="dark"*/}
-            {/*leftContent="<"*/}
-            {/*rightContent={[*/}
-                {/*<Icon key="0" type="search" style={{ marginRight: '16px' }} />,*/}
-                {/*<Icon key="1" type="ellipsis" />,*/}
-            {/*]}>*/}
-            {/*主页*/}
-        {/*</NavBar>*/}
         <h2>Home 1234</h2>
         <Link to="/about">About</Link>
         <br/>
         <Link to="/main">main</Link>
+        <Button onClick={()=>{this.props.history.push('/main')}}>前往main页面</Button>
     </div>
 );
 
 const About = () => (
     <div style={{ backgroundColor: 'white',width:'100%',height:'100%',marginTop:45}}>
-        {/*<NavBar*/}
-            {/*mode="dark"*/}
-            {/*leftContent="<"*/}
-            {/*rightContent={[*/}
-                {/*<Icon key="0" type="search" style={{ marginRight: '16px' }} />,*/}
-                {/*<Icon key="1" type="ellipsis" />,*/}
-            {/*]}>*/}
-            {/*关于页面*/}
-        {/*</NavBar>*/}
-        <div style={{ backgroundColor: 'red', width:'100%', textAlign: 'center' ,position:'fixed'}}>
+        {/*<div style={{ backgroundColor: 'red', width:'100%', textAlign: 'center' ,position:'fixed'}}>*/}
             <h2>About</h2>
             <Button type="primary">关于我们</Button>
             <Link to="/">Home</Link>
             <div style={{width:'100%',height:1000}}></div>
             <h2>end</h2>
-        </div>
+        {/*</div>*/}
     </div>
 );
 
@@ -58,18 +41,12 @@ export default class App extends Component {
 
     renderContent(pageText) {
         return (
-            <div style={{ backgroundColor: 'red',width:'100%',height:'100%',marginTop:45}}>
+            <div style={{ backgroundColor: 'gray',width:'100%',height:'100%',marginTop:45}}>
                 <h2>start</h2>
-                {/*<NavBar*/}
-                    {/*mode="dark"*/}
-                    {/*leftContent="<"*/}
-                    {/*rightContent={[*/}
-                        {/*<Icon key="0" type="search" style={{ marginRight: '16px' }} />,*/}
-                        {/*<Icon key="1" type="ellipsis" />,*/}
-                    {/*]}>*/}
-                    {/*NavBar页面*/}
-                {/*</NavBar>*/}
-                <div style={{ paddingTop: 60 }}>Clicked “{pageText}” tab， show “{pageText}” information</div>
+                <div style={{ paddingTop: 60 }}>Clicked “{pageText}” tab， show “{pageText}” information
+                    <br/>
+                    <Button style={{width:'50%',marginTop:50}} type="primary" onClick={()=>{this.props.history.push('/main/liwy')}}>前往main页面</Button>
+                </div>
                 <a style={{ display: 'block', marginTop: 40, marginBottom: 20, color: '#108ee9' }}
                    onClick={(e) => {
                        e.preventDefault();
@@ -90,6 +67,7 @@ export default class App extends Component {
                 >
                     Click to switch fullscreen
                 </a>
+
                 {/*<div style={{width:'100%',height:1000}}></div>*/}
                 <h2>end</h2>
             </div>
@@ -105,29 +83,15 @@ export default class App extends Component {
               <div style={{position:'absolute',width:'100%',height:45,zIndex:999}}>
                   <NavBar
                       mode="dark"
-                      leftContent="<"
                       rightContent={[
                           <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
                           <Icon key="1" type="ellipsis" />,
                       ]}>
-                      标题
+                      LIWY
                   </NavBar>
               </div>
 
-            {/*<header className="App-header">*/}
-                {/*<ul>*/}
-                    {/*<li><Link to="/">Home</Link></li>*/}
-                    {/*<li><Link to="/about">About</Link></li>*/}
-                    {/*<li><Link to="/main">MainPage</Link></li>*/}
-                {/*</ul>*/}
-            {/*</header>*/}
-
-              {/*<Route exact path="/" component={Home}/>*/}
-              {/*<Route exact path="/main" component={MainPage}/>*/}
-              {/*<Route path="/about" component={About}/>*/}
-              {/*<About/>*/}
-
-             {/*<div style={{marginBottom:0,marginTop:0,width:'100%'}}>*/}
+           
                  <TabBar
                      unselectedTintColor="#949494"
                      tintColor="#33A3F4"
@@ -217,9 +181,9 @@ export default class App extends Component {
 
                          }}
                      >
-                         {this.renderContent('Friend')}
+                         {/*{this.renderContent('Friend')}*/}
                          {/*<Route path="/about" component={About}/>*/}
-                         {/*<About/>*/}
+                         <About/>
                      </TabBar.Item>
                      <TabBar.Item
                          icon={{ uri: 'https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg' }}
