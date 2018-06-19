@@ -6,6 +6,15 @@ export default class MainPage extends Component {
 
     constructor(props){
         super(props);
+        let match = this.props.match;
+        let words = '';
+        if (match != null && match.params != null) {
+            let params = match.params;
+            words = params.words;
+        }
+        this.state={
+            words:words,
+        }
 
     }
     render() {
@@ -31,7 +40,7 @@ export default class MainPage extends Component {
                         <h1 className="App-title">这里是这只页面</h1>
                     </header>
 
-                    <p className="App-intro">Hello World!{this.props.match.params.words}</p>
+                    <p className="App-intro">Hello World!{this.state.words}</p>
                     <div style={{width:'100%',height:1000,backgroundColor: 'green'}}></div>
                     <p className="App-intro">end</p>
                 </div>

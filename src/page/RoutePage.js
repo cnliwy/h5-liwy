@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom'
 import MainPage from './MainPage'
 import AppPage from './App'
+import FormPage from './FormPage'
 import style from './css/RouteStyle.css'
 export default class RoutePage extends Component {
     constructor(props) {
@@ -29,6 +30,7 @@ export default class RoutePage extends Component {
                         <Switch>
                             <Route exact path='/' component={AppPage}/>
                             <Route path='/main/:words' component={MainPage}/>
+                            <Route path='/form' component={FormPage}/>
                         </Switch>
                     </Switch>
 
